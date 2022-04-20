@@ -2,34 +2,54 @@
     ViewData["Title"] = "Listagem de Contatos";
 }
 
-<h1>Listagem de Contatos</h1>
+<h1 class="display-4">Listagem de Contatos</h1>
     
 <table class="table">
   <thead>
     <tr>
       <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Celular</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
-      <td>Otto</td>
-      <td>mdo</td>
+      <td>Otto@gmail.com</td>
+      <td>11 98569-4587</td>
+      <td>
+          <div class="btn-group" role="group">
+              <a role="button" class="btn btn-primary">Editar</a>
+              <a role="button" class="btn btn-danger">Apagar</a>
+        </div>
+      </td>
     </tr>
     <tr>
       <th scope="row">2</th>
       <td>Jacob</td>
-      <td>Thornton</td>
-      <td>fat</td>
+      <td>Thornton@gmail.com</td>
+      <td>11 98569-4587</td>
+      <td>
+          <div class="btn-group" role="group">
+              <a role="button" class="btn btn-primary">Editar</a>
+              <a role="button" class="btn btn-danger">Apagar</a>
+        </div>
+      </td>
     </tr>
     <tr>
       <th scope="row">3</th>
-      <td colspan="2">Larry the Bird</td>
-      <td>twitter</td>
+      <td>Larry</td>
+      <td>Larry@gmail.com</td>
+      <td>11 98569-4587</td>
+      <td>
+          <div class="btn-group" role="group">
+              <a role="button" class="btn btn-primary">Editar</a>
+              <a role="button" class="btn btn-danger">Apagar</a>
+        </div>
+      </td>
     </tr>
   </tbody>
 </table>
