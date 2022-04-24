@@ -11,21 +11,32 @@
 
 <form asp-controller = "Contato" asp-action = "Criar" method = "post">
 
-	<div class="form-group">
+	<div class="form-group"> 
 		<label for="exampleInputEmail1">Nome</label>
 		<input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do contato">
+		@Html.ValidationMessageFor(x => x.Nome)
 	</div>
+
 	<br />
+
 	<div class="form-group">
 		<label for="exampleInputEmail1">E-mail</label>
 		<input type="text" asp-for="Email" class="form-control" placeholder="Digite o email do contato">
+		@Html.ValidationMessageFor(x => x.Email)
 	</div>
+
 	<br />
+
 	<div class="form-group">
 		<label for="exampleInputEmail1">Celular</label>
 		<input type="text" asp-for="Celular" class="form-control" placeholder="Digite o celular do contato">
+		@Html.ValidationMessageFor(x => x.Celular)
 	</div>
+
 	<br />
-	<button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
-	<a class="btn btn-secondary btn-block" role="button" asp-controller="Contato" asp-action="Index">Voltar</a>
+	
+	<div class="d-grid gap-2">
+		<button type="submit" class="btn btn-primary">Cadastrar</button>
+		<a class="btn btn-secondary" role="button" asp-controller="Contato" asp-action="Index">Voltar</a>
+	</div>
 </form>
