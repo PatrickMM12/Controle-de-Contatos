@@ -47,14 +47,14 @@ namespace ControleDeUsuários.Controllers
                 }
                 else
                 {
-                    TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuario!";
+                    TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuário!";
                 }
 
                 return RedirectToAction("Index");
             }
             catch (System.Exception erro)
             {
-                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuario. Detalhe do erro: {erro.Message}";
+                TempData["MensagemErro"] = $"Ops, não conseguimos apagar seu usuário. Detalhe do erro: {erro.Message}";
                 return RedirectToAction("Index");
             }
         }
@@ -81,13 +81,22 @@ namespace ControleDeUsuários.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(UsuarioModel usuario)
+        public IActionResult Editar(UsuarioSemSenhaModel usuarioSemSenhaModel)
         {
             try
             {
+                UsuarioModel usuario = null;
                 if (ModelState.IsValid)
                 {
-                    usuarioRepositorio.Atualizar(usuario);
+                    usuario = new UsuarioModel()
+                    {
+                        Id = usuarioSemSenhaModel.Id,
+                        Nome = usuarioSemSenhaModel.Nome,
+                        Login = usuarioSemSenhaModel.Login,
+                        Email = usuarioSemSenhaModel.Email,
+                        Perfil = usuarioSemSenhaModel.Perfil
+                    };
+                    usuario = usuarioRepositorio.Atualizar(usuario);
                     TempData["MensagemSucesso"] = "Usuário alterado com sucesso!";
                     return RedirectToAction("Index");
                 }
