@@ -21,6 +21,7 @@ namespace ControleDeContatos
                 .AddDbContext<BancoContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("DataBase")));
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
+            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
