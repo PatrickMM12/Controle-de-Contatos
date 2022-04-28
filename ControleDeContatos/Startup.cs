@@ -33,7 +33,10 @@ namespace ControleDeContatos
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+
+                app.UseHsts();
             }
+            app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -44,7 +47,7 @@ namespace ControleDeContatos
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Login}/{action=Index}/{id?}");
             });
         }
     }

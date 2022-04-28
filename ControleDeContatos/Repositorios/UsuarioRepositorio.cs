@@ -12,6 +12,10 @@ namespace ControleDeContatos.Repositorios
             this.bancoContext = bancoContext;
         }
 
+        public UsuarioModel BuscarPorLogin(string login)
+        {
+            return bancoContext.Usuarios.FirstOrDefault(u => u.Login.ToUpper() == login.ToUpper());
+        }
         public UsuarioModel ListarPorId(int id)
         {
             return bancoContext.Usuarios.FirstOrDefault(u => u.Id == id);
@@ -39,7 +43,7 @@ namespace ControleDeContatos.Repositorios
             usuarioDb.Nome = usuario.Nome;
             usuarioDb.Email = usuario.Email;
             usuarioDb.Login = usuario.Login;
-            usuario.Perfil = usuario.Perfil;
+            usuarioDb.Perfil = usuario.Perfil;
             usuarioDb.DataAtualizacao = DateTime.Now;
 
             bancoContext.Usuarios.Update(usuarioDb);
@@ -59,5 +63,7 @@ namespace ControleDeContatos.Repositorios
 
             return true;
         }
+
+
     }
 }
