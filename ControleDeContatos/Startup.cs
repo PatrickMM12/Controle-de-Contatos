@@ -1,3 +1,4 @@
+using ControleDeContatos.Helper;
 using ControleDeContatos.Models.Data;
 using ControleDeContatos.Repositorios;
 using Microsoft.EntityFrameworkCore;
@@ -20,8 +21,17 @@ namespace ControleDeContatos
             services.AddEntityFrameworkSqlServer()
                 .AddDbContext<BancoContext>(
                     options => options.UseSqlServer(Configuration.GetConnectionString("DataBase")));
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddScoped<IContatoRepositorio, ContatoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<ISessao, Sessao>();
+
+            services.AddSession(o =>
+            {
+                o.Cookie.HttpOnly = true;
+                o.Cookie.IsEssential = true;
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -42,6 +52,8 @@ namespace ControleDeContatos
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
